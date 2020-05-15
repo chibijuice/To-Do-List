@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To-Do List</h1>
+
+      <form class="form" id="form" autocomplete="off">
+        <input type="text" class="input" id="input" placeholder="New task..." />
+        <button class="submit" id="submit">
+          <i class="fas fa-plus" title="Add"></i>
+        </button>
+      </form>
+      <div id="todo-list"></div>
+      <!-- <ul>
+        
+
+        <li class="to-do" id="to-do">
+          <i class="far fa-circle toggle" title="Mark as Finished"></i>
+          <span> Finish this damn code</span>
+          <i class="fas fa-pencil-alt edit" title="Edit"></i>
+        </li>
+
+        <li class="to-do" id="to-do">
+          <i class="far fa-circle toggle" title="Mark as Finished"></i>
+          <span> Whatever else you need to do</span>
+          <i class="fas fa-pencil-alt edit" title="Edit"></i>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="done" id="done">
+          <i class="fas fa-check-circle toggle" title="Undo"></i>
+          <span> Task has been done! i hope...</span>
+          <i class="fas fa-trash-alt task-delete" title="Delete"></i>
+        </li>
+
+        <li class="done" id="done">
+          <i class="fas fa-check-circle toggle" title="Undo"></i>
+          <span> Yipeee!</span>
+          <i class="fas fa-trash-alt task-delete" title="Delete"></i>
+        </li>
+
+        <li class="done" id="done">
+          <i class="fas fa-check-circle toggle" title="Undo"></i>
+          <span>let me believe i finished something... </span>
+          <i class="fas fa-trash-alt task-delete" title="Delete"></i>
+        </li>
+
+        <li class="done" id="done">
+          <i class="fas fa-check-circle toggle"></i>
+          <span
+            >Making it longer so hopefully it takes at least 2 lines? Well it
+            didn't, but now maybe yes?</span
+          >
+          <i class="fas fa-trash-alt task-delete" title="Delete"></i>
+        </li>
+      </ul> -->
+    </div>
+    <script id="todo-list-template" type="text/x-handlebars-template">
+      <ul>
+        {{#each todoTasks}}
+        {{>listItem task=. }}
+        {{/each}}
+      </ul>
+      <ul class="done">
+        {{#each doneTasks}}
+        {{>listItem task=. }}
+        {{/each}}
+      </ul>
+    </script>
+
+    <script id="list-item-template" type="text/x-handlebars-template">
+      <li class="to-do" data-id="{{task.id}}">
+
+        {{#if task.editing}}
+        {{else}}
+        <i class="far {{#if task.done}} fa-check-circle {{else}} fa-circle {{/if}} toggle"
+        title="{{#if task.done}} Undo {{else }} Mark as Finished {{/if}}"></i>
+        {{/if}}
+
+        {{#if task.editing}}
+          <input type="text" class="edit-input" value="{{task.text}}" placeholder="Edit task..." />
+        {{else}}
+        <span>
+          {{task.text}}
+        </span>
+        {{/if}}
+
+      </span>
+      {{#if task.editing}}
+      <i class="fas fa-check edit-check" title="Edit"></i>
+      <i class="fas fa-times edit" title="Cancel"></i>
+      {{else}}
+        <i class="fas {{#if task.done}} fa-trash-alt task-delete {{else}} fa-pencil-alt edit {{/if}}"
+        title=" {{#if task.done}} Delete {{else}} Edit {{/if}}"></i>
+        {{/if}}
+      </li>
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

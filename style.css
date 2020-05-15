@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+:root {
+  --primary-color: #015668;
+  --list-color: #007188;
+  --list-done: #016074;
+  --secondary-color: #fff1cf;
+  --text-color: #ffd369;
+  --bg-color: #263f44;
+  --edit-color: #0e8ca5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat", Arial;
+}
+
+.container {
+  background-color: var(--primary-color);
+  margin: 40px;
+  padding: 10px 40px 30px;
+  width: 600px;
+  border-radius: 15px;
+}
+
+form {
+  display: flex;
+  margin: 30px 0 35px;
+}
+
+form input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 18px;
+  background-color: var(--secondary-color);
+  outline: none;
+  border-radius: 7px 0 0 7px;
+  font-family: "Montserrat", Arial;
+}
+
+form ::placeholder {
+  color: var(--primary-color);
+  opacity: 60%;
+}
+
+form button {
+  cursor: pointer;
+  border: none;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  padding-right: 15px;
+  outline: none;
+  border-radius: 0 7px 7px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  display: flex;
+  align-items: baseline;
+  /* justify-content: space-between; */
+  background-color: var(--list-color);
+  margin-bottom: 5px;
+  padding: 15px 15px 15px;
+  border-radius: 7px;
+}
+
+ul li span {
+  flex: 1;
+  padding-right: 10px;
+}
+
+.toggle {
+  padding: 0 12px 0px 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.task-delete,
+.edit,
+.edit-check {
+  padding: 0 4px 0px 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.toggle:hover,
+.task-delete:hover,
+.edit:hover,
+.edit-check:hover {
+  transform: scale(1.2);
+}
+
+.to-do span {
+  font-size: 20px;
+}
+
+.done li {
+  background-color: var(--list-done);
+}
+
+.done span {
+  font-size: 15px;
+  color: var(--secondary-color);
+}
+
+.edit-input {
+  flex: 1;
+  background-color: var(--list-done);
+  border: none;
+  color: var(--text-color);
+  padding: 10px;
+  height: 40px;
+  font-size: 18px;
+  outline: none;
+  border-radius: 10px;
+  font-family: "Montserrat", Arial;
+}
+
+.edit-input::placeholder {
+  /* .edit-input::placeholder (without space) means "on" the element .edit-input
+  li ::placeholder (with space) means "inside" the element li */
+  color: var(--secondary-color);
+  opacity: 0.5;
+  font-size: 15px;
+}
